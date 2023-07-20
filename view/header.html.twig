@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>MVC with Twig</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="view/web/css/base.css" media="screen"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="shortcut icon" href="view/web/img/favicon.ico"/>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="offres">
+							<button>Accueil</button>
+						</a>
+					</li>
+					{% if session.user is defined %}
+						<li>
+							<form action="creer_offre" method="">
+								<input type="submit" value="Ajouter une offre"></form>
+						</li>
+						<li></li>
+						<li>
+							<a href="update_user">
+								<button>Mon compte</button>
+							</a>
+						</li>
+						<a href="logout">
+							<button>Se déconnecter</button>
+						</a>
+					</li>
+				</ul>
+				<p class="nameNav">
+					Vous êtes connecté sur :
+					{{session.user}}
+				</p>
+			{% else %}
+				<li><a href="creation"><button>Créer un compte</button></a></li>
+				<li><a href="connexion"><button>Se connecter</button></a></li>
+			</ul>
+		{% endif %}
+	</body>
+</html></nav></body></html>

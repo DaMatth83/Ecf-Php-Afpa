@@ -1,0 +1,9 @@
+<div>
+	<p>{{message}}</p>
+
+	{% if session.user is defined %}
+		<p>Vous êtes connecté sur :
+			{{session.user}}</p>
+	{% endif %}
+
+</div>

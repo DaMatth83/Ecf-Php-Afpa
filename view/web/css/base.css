@@ -1,0 +1,19 @@
+body {
+   color: rgb(226, 226, 240);
+   background-color: black;
+   font-family: 'Ubuntu', sans-serif;
+   margin: 0px;
+}
+
+header,
+footer {
+   color: rgb(102, 102, 114);
+   background-color: white;
+   text-align: center;
+   width: 100%;
+}
+
+footer {
+   position: fixed;
+   bottom: 0px;
+}
