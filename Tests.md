@@ -4,7 +4,7 @@
 
 | Fonctionnalité      | Test effectué   | Résultat attendu   | Résultat Ok |
 |---------------------|-----------------|--------------------|-------------|
-| Exemple 1           | Test A          | Résultat attendu A | Oui         |
+| getAll()            | $film = $filmDao->getAll();         | Recupérer tout les films | Oui         |
 | Exemple 2           | Test B          | Résultat attendu B | Non         |
 | Exemple 3           | Test C          | Résultat attendu C | Oui         |
 | Exemple 4           | Test D          | Résultat attendu D | Oui         |
