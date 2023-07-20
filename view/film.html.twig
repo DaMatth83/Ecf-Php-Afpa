@@ -1,45 +1,52 @@
-<div>
-	{# <h1>Nos films :
-													</h1> #}
-	{# {% for film in film %}
-															{{ film.getId }};
-															{{ film.getTitle }};
-															{{ film.getRealisateur }};
-															{{ film.getAffiche }};
-															{{ film.getAnnee}};
-														{% endfor %} #}
-		<div class="container"> <h1>Carrousel</h1>
-		<div
-			id="demo" class="carousel slide" data-ride="carousel">
-			<!-- Indicateurs -->
-			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-				<li data-target="#demo" data-slide-to="2"></li>
-			</ul>
-
-			<!-- Carrousel -->
+<div class="container-fluid p-0 mb-5">
+	<div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
 			{% for film in film %}
-				<div class="carousel-inner">
-					<div class="carousel-item">
-						<img src="{{film.getAffiche}}" alt="Carrousel slide 1" class="d-block w-100">
-						<div class="carousel-caption d-none d-md-block">
-							<h4>{{film.getTitle}}</h4>
-							<p>Légende de la slide n°1.</p>
+				<div class="carousel-item {{ loop.first ? 'active' : '' }}">
+					<div class="d-flex align-items-center justify-content-end me-5">
+						<img class="img-fluid w-25 rounded shadow" src="{{ film.getAffiche() }}" alt="Image">
+					</div>
+					<div class="carousel-caption d-flex align-items-center">
+						<div class="container">
+							<div class="row align-items-center justify-content-center justify-content-lg-start">
+								<div class="col-4 col-lg-7 text-center text-lg-start">
+									<h1 class=" text-black mb-3 animated slideInDown">{{film.getId}}
+										-
+										{{ film.getTitle }}</h1>
+									<p class="text-black class= mb-3 animated slideInDown">Réalisé en
+										<b>
+											<i>{{film.getAnnee}}</b>
+										</i>
+										par
+										<b>{{film.getRealisateur}}</b>
+									</p>
+									<p class="text-black class= mb-3 animated slideInDown">
+										{% for role in film.getRoles %}
+											Avec
+											<u>
+												<i>
+													{{ role.getActeur.getPrenom }}
+													{{ role.getActeur.getNom }}</i>
+											</u>
+											dans le rôle de
+											<b>
+												{{ role.getPersonnage }}</b>
+											{% if not loop.last %}<br>
+											{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<!-- Contrôles -->
-				<a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Précédent</span>
-				</a>
-				<a class="carousel-control-next" href="#demo" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Suivant</span>
-				</a>
-			</div>
+			{% endfor %}
 		</div>
-	{% endfor %}
-
+		<div class="d-flex justify-content-center mt-3">
+			<button class="btn btn-secondary me-2" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">Précédent</button>
+			<button class="btn btn-secondary" type="button" data-bs-target="#header-carousel" data-bs-slide="next">Suivant</button>
+		</div>
+	</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
