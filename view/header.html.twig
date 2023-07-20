@@ -12,35 +12,6 @@
 		<header>
 			<nav>
 				<ul>
-					<li>
-						<a href="offres">
-							<button>Accueil</button>
-						</a>
-					</li>
-					{% if session.user is defined %}
-						<li>
-							<form action="creer_offre" method="">
-								<input type="submit" value="Ajouter une offre"></form>
-						</li>
-						<li></li>
-						<li>
-							<a href="update_user">
-								<button>Mon compte</button>
-							</a>
-						</li>
-						<a href="logout">
-							<button>Se déconnecter</button>
-						</a>
-					</li>
-				</ul>
-				<p class="nameNav">
-					Vous êtes connecté sur :
-					{{session.user}}
-				</p>
-			{% else %}
-				<li><a href="creation"><button>Créer un compte</button></a></li>
 				<li><a href="connexion"><button>Se connecter</button></a></li>
 			</ul>
-		{% endif %}
-	</body>
-	<<<<<<<HEAD</html></nav></body></html>=======</html></nav></body></html>>>>>>>> 14678f2057fc316b79f1fd8cb9ab1d026513bcfc</html>
+	</body>	
