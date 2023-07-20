@@ -67,4 +67,8 @@ class OffresDAO extends Dao
         return false;
     }
 }  
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 14678f2057fc316b79f1fd8cb9ab1d026513bcfc

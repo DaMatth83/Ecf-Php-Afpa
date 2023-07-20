@@ -18,6 +18,11 @@ if (isset($_POST['pw'])) {
     }
 }}
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 14678f2057fc316b79f1fd8cb9ab1d026513bcfc
 echo $twig->render('update_user.html.twig',[
     'message' => $message
 ]);
