@@ -1,0 +1,16 @@
+<div>
+	<h1>Mon compte</h1>
+	<form action="update_user" method="post">
+		<label for="email">Email :
+			{{session.user}}</label><br>
+		<label for="pw">Mot de passe actuel :</label>
+		<input type="password" id="pw" name="pw"><br>
+		<label for="newPw">Nouveau mot de passe :</label>
+		<input type="password" id="newPw" name="newPw"><br>
+		<input type="submit" value="Modifier">
+	</form>
+
+
+	<p>{{message}}</p>
+
+</div>

@@ -1,0 +1,44 @@
+<div>
+	<h1>Nos offres d'emploi :
+	</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="th">Titre</th>
+				<th class="th">Description</th>
+				{% if session.user is defined %}
+					<th class="th">Modifier</th>
+					<th class="th">Supprimer</th>
+				{% endif %}
+
+			</tr>
+		</thead>
+		{% for offer in offers %}
+			<tr>
+				<td class="td">{{ offer.getTitle }}</td>
+				<td class="td">{{ offer.getDescription }}</td>
+				{% if session.user is defined %}
+					<td class="td">
+						<a href="update_offre&{{ offer.getId }}">
+							<button>Modifier</button>
+						</a>
+					</td>
+					<td class="td">
+						<a href="delete_offre&{{ offer.getId }}">
+							<button>Supprimer</button>
+						</a>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+<div>
+
+	{% if session.user is not defined %}
+		<hr>
+		<p class="message">
+			Veuillez vous connecter pour ajouter, modifier ou supprimer une offre !
+		</p>
+	{% endif %}
+</div>

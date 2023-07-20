@@ -1,0 +1,18 @@
+<div>
+	<h1>Ajouter une offre :</h1>
+	{# Formulaire pour ajouter une offre  #}
+
+	<form action="creer_offre" method="POST">
+		<div class="form">
+			<label for="titre">Nom de l'offre :</label>
+			<input type="text" id="titre" name="titre">
+			<label class="formDesc" for="desc">Description de l'offre :</label>
+			<input type="text" id="desc" name="desc">
+			<input class="formButton" type="submit" value="Ajouter">
+		</div>
+	</div>
+
+</form>
+<p>{{ message }}</p><br>
+<p>{{ messageTitre}}</p><br>
+<p>{{ messageDesc}}</p><br>

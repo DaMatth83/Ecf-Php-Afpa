@@ -1,0 +1,18 @@
+<div>
+	<h1>Modifier une offre</h1>
+	<form action="update_offre" method="post">
+		<div class="form">
+			<input type="text" id="id" name="id" value="{{offre.getId}}" hidden>
+			<label for="newTitle">
+				Nouveau titre :
+			</label>
+			<input type="text" id="newTitle" name="newTitle" value="{{offre.getTitle}}">
+			<label class="formDesc" for="newDesc">
+				Nouvelle description :
+			</label>
+			<input type="text" id="newDesc" name="newDesc" value="{{offre.getDescription}}">
+			<input class="formButton" type="submit" value="Modifier">
+		</div>
+	</form>
+	{{message}}
+</div>
