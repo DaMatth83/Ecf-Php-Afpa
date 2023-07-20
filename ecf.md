@@ -58,4 +58,4 @@ Pour le développement de l'application webFilm, nous utiliserons les technologi
 
 ## Conclusion
 
-Le projet webFilm vise à développer une application Web complète de vidéothèque en ligne en respectant les bonnes pratiques de développement et les normes de sécurité. Chaque membre de l'équipe se concentrera sur des tâches spécifiques, mais une collaboration étroite sera maintenue grâce à GitHub et aux réunions régulières pour assurer le succès du projet.
+Le projet webFilm vise à développer une application Web complète de vidéothèque en ligne en respectant les bonnes pratiques de développement et les normes de sécurité. Chaque membre de l'équipe se concentrera sur des tâches spécifiques, mais une collaboration étroite sera maintenue grâce à GitHub et aux réunions régulières pour assurer le succès du projet. TEST
