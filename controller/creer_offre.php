@@ -26,8 +26,3 @@ echo $twig->render('creer_offre.html.twig', [
     'messageDesc' => $messageDesc,
     'offre' => $offre
 ]);
-<<<<<<< HEAD
-?>
-=======
-?>
->>>>>>> 14678f2057fc316b79f1fd8cb9ab1d026513bcfc
