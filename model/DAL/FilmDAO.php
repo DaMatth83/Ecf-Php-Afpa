@@ -3,23 +3,6 @@
 class FilmDAO extends Dao
 {
 
-    //Récupérer tous les films
-    // public function getAll()
-    // {
-
-    //     $query = $this->BDD->prepare("SELECT f.idFilm, f.titre, f.realisateur, f.affiche, f.annee, r.personnage, a.nom AS acteur_nom, a.prenom AS acteur_prenom
-    //     FROM films f
-    //     INNER JOIN roles r ON f.idFilm = r.idFilm
-    //     INNER JOIN acteurs a ON r.idActeur = a.idActeur
-    //     ORDER BY f.idFilm");
-    //     $query->execute();
-    //     $films = array();
-
-    //     while ($data = $query->fetch()) {
-    //         $films[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']);
-    //     }
-    //     return ($films);
-    // }
     public function getAll()
     {
         $query = $this->BDD->prepare("SELECT f.idFilm, f.titre, f.realisateur, f.affiche, f.annee, r.personnage, a.nom AS acteur_nom, a.prenom AS acteur_prenom

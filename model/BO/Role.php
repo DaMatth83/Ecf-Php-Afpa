@@ -7,7 +7,7 @@ class Role
     private $personnage;
     private $acteur;
 
-    public function __construct($personnage, $acteur)
+    public function __construct(string $personnage, Acteur $acteur)
     {
         $this->personnage = $personnage;
         $this->acteur = $acteur;
