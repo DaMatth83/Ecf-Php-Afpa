@@ -1,12 +1,41 @@
 <div>
-	<h1>Créer un compte</h1>
-	<form action="users" method="post">
-		<div class="form">
-			<label for="email">Email :</label>
-			<input type="text" id="email" name="email">
-			<label class="formDesc" for="pw">Password :</label>
-			<input type="password" id="pw" name="pw">
-			<input class="formButton" type="submit" value="Créer un compte">
+	<form class="form" action="creation" method="post">
+		<div class="conteneur">
+			<div class="titreAnnee">
+				<label class="mb-2" for="titre">Titre</label>
+			</div>
+			<div class="titreAnnee annee">
+				<label class="mb-2" for="annee">Année</label>
+			</div>
 		</div>
-	</form>
+		<div class="conteneur">
+			<input class="titre mb-3" type="text" name="titre" required>
+			<input class="annee mb-3" type="text" name="annee" required>
+		</div>
+		<label class="affiche mb-2" for="affiche">Affiche</label>
+		<input class="affiche mb-3" type="text" name="affiche" required>
+		<label class="realisateur mb-2" for="realisateur">Réalisateur</label>
+		<input class="realisateur mb-3" type="text" name="realisateur" required>
 </div>
+</div>
+<div class="d-flex m-auto w-75">
+	<p class="mb-2">Rôle(s)</p>
+</div>
+<div class="d-flex m-auto w-75">
+	<input class="w-25" type="text" name="personnage" placeholder="Personnage" required>
+	<input class="w-25 ms-5" type="text" name="nom" placeholder="Nom" required>
+	<input class="w-25 ms-5" type="text" name="prenom" placeholder="Prenom" required>
+</div>
+<div class="d-flex m-auto w-75 mt-3">
+	<input class="w-25" type="text" name="personnage2" placeholder="Personnage">
+	<input class="w-25 ms-5" type="text" name="nom2" placeholder="Nom">
+	<input class="w-25 ms-5" type="text" name="prenom2" placeholder="Prenom">
+</div>
+<div class="d-flex m-auto w-75 mt-3">
+	<input class="w-25" type="text" name="personnage3" placeholder="Personnage">
+	<input class="w-25 ms-5" type="text" name="nom3" placeholder="Nom">
+	<input class="w-25 ms-5" type="text" name="prenom3" placeholder="Prenom">
+</div>
+<input class="d-flex m-auto mt-5" type="submit" name="submit" id="submit" value="Ajouter">
+</form>
+<h2 class="text-center mt-5">{{message}}</h2>

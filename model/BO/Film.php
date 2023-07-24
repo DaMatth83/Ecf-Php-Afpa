@@ -18,16 +18,16 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
-    private $roles = [];
+    private $roles;
 
-    public function __construct($id, $title, $realisateur, $affiche, $annee, $roles)
+    public function __construct($id, $title, $realisateur, $affiche, $annee)
     {
         $this->setId($id);
         $this->setTitle($title);
         $this->setRealisateur($realisateur);
         $this->setAffiche($affiche);
         $this->setAnnee($annee);
-        $this->getRoles($roles);
+        $this->roles = array();
     }
 
     public function getTitle()
@@ -107,7 +107,7 @@ class Film
         return $this;
     }
 
- public function addRole($role)
+ public function addRole(Role $role)
     {
         $this->roles[] = $role;
     }

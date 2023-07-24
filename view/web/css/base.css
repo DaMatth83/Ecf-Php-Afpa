@@ -65,3 +65,35 @@ nav {
    color: rgb(5, 119, 250);
    display: flex;
 }
+
+.titreAnnee {
+   width: 50%;
+   display: flex;
+   margin-top: 2%;
+}
+
+.form {
+   width: 75%;
+   margin: auto;
+}
+
+.conteneur {
+   display: flex;
+}
+
+.titre,
+.annee {
+   width: 50%;
+}
+
+.annee {
+   margin-left: 1%;
+}
+
+.affiche {
+   width: 100%;
+}
+
+.realisateur {
+   width: 50%;
+}
