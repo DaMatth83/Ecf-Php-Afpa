@@ -25,6 +25,7 @@ class FilmDAO extends Dao
 
             // Ajouter chaque roles / acteurs au film correspondant
             if ($data['personnage'] != null) {
+
                 $acteur = new Acteur($data['idActeur'],$data['acteur_nom'], $data['acteur_prenom']);
                 $role = new Role($data['idRole'], $data['personnage'], $acteur);
                 $films[$idFilm]->addRole($role);
@@ -108,9 +109,6 @@ class FilmDAO extends Dao
             return $e;
         }
     }
-
-
-
 
 
     //Récupérer plus d'info sur 1 film

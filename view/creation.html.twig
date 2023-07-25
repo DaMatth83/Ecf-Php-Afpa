@@ -16,26 +16,17 @@
 		<input class="affiche mb-3" type="text" name="affiche" required>
 		<label class="realisateur mb-2" for="realisateur">Réalisateur</label>
 		<input class="realisateur mb-3" type="text" name="realisateur" required>
+		<div class="d-flex m-auto w-75">
+			<p class="mb-2">Rôle(s)</p>
+			<button class="ms-2 mb-3" id="btnRole" type="button">Ajouter un rôle</button>
+		</div>
+		<div class="d-flex m-auto w-75" id="divRole">
+			<!-- personnage[] permet de creer un array pour stocker les différents personnages au moment du clonage -->
+			<input class="w-25 mb-3" type="text" name="personnage[]" placeholder="Personnage" required>
+			<input class="w-25 ms-5 mb-3" type="text" name="nom[]" placeholder="Nom" required>
+			<input class="w-25 ms-5 mb-3" type="text" name="prenom[]" placeholder="Prenom" required>
+		</div>
+		<input class="d-flex m-auto mt-5" type="submit" name="submit" id="submit" value="Ajouter">
+	</form>
 </div>
-</div>
-<div class="d-flex m-auto w-75">
-	<p class="mb-2">Rôle(s)</p>
-</div>
-<div class="d-flex m-auto w-75">
-	<input class="w-25" type="text" name="personnage" placeholder="Personnage" required>
-	<input class="w-25 ms-5" type="text" name="nom" placeholder="Nom" required>
-	<input class="w-25 ms-5" type="text" name="prenom" placeholder="Prenom" required>
-</div>
-<div class="d-flex m-auto w-75 mt-3">
-	<input class="w-25" type="text" name="personnage2" placeholder="Personnage">
-	<input class="w-25 ms-5" type="text" name="nom2" placeholder="Nom">
-	<input class="w-25 ms-5" type="text" name="prenom2" placeholder="Prenom">
-</div>
-<div class="d-flex m-auto w-75 mt-3">
-	<input class="w-25" type="text" name="personnage3" placeholder="Personnage">
-	<input class="w-25 ms-5" type="text" name="nom3" placeholder="Nom">
-	<input class="w-25 ms-5" type="text" name="prenom3" placeholder="Prenom">
-</div>
-<input class="d-flex m-auto mt-5" type="submit" name="submit" id="submit" value="Ajouter">
-</form>
 <h2 class="text-center mt-5">{{message}}</h2>
