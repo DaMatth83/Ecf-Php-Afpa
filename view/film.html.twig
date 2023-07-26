@@ -9,52 +9,48 @@
 			{% endif %}
 			{% for film in films %}
 			<div class="carousel-item {{ loop.first ? 'active' : '' }}">
-				<div class="d-flex align-items-center justify-content-end me-5 ">
-					<img class=" w-25 rounded shadow affiche" src="{{ film.getAffiche() }}" alt="Image">
-				</div>
-				<div class="carousel-caption d-flex align-items-center">
-					<div class="container">
-						<div class="row align-items-center justify-content-center justify-content-lg-start">
-							<div class="col-4 col-lg-7 text-center text-lg-start">
-								<h1 class=" text-black mb-3 animated slideInDown">{{film.getId}}
-									-
-									{{ film.getTitle }}{{message2}}</h1>
-								<p class="text-black class= mb-3 animated slideInDown">Réalisé en
-									<b>
-										<i>{{film.getAnnee}}</b>
-									</i>
-									par
-									<b>{{film.getRealisateur}}</b>
-								</p>
-								<p class="text-black class= mb-3 animated slideInDown">
-									{% for role in film.getRoles %}
-									Avec
-									<u>
-										<i>
-											{{ role.getActeur.getPrenom }}
-											{{ role.getActeur.getNom }}</i>
-									</u>
-									dans le rôle de
-									<b>
-										{{ role.getPersonnage }}</b>
-									{% if not loop.last %}<br>
-									{% endif %}
-									{% endfor %}
-								</p>
-								<a href="film&{{ film.getId }}">
-									<button class="btn-danger rounded">Supprimer</button>
-								</a>
-							</div>
+				<div class="d-flex w-100 align-items-center justify-content-center">
+					<div class="d-flex align-items-start justify-content-space-beetween">
+						<div class="me-5 w-100 mt-5">
+							<h1 class="text-black mb-3 animated slideInDown">{{film.getId}}
+								-
+								{{ film.getTitle }}{{message2}}</h1>
+							<p class="text-black class= mb-3 animated slideInDown">Réalisé en
+								<b>
+									<i>{{film.getAnnee}}</b>
+								</i>
+								par
+								<b>{{film.getRealisateur}}</b>
+							</p>
+							<p class="text-black class= mb-3 animated slideInDown">
+								{% for role in film.getRoles %}
+								Avec
+								<u>
+									<i>
+										{{ role.getActeur.getPrenom }}
+										{{ role.getActeur.getNom }}</i>
+								</u>
+								dans le rôle de
+								<b>
+									{{ role.getPersonnage }}</b>
+								{% if not loop.last %}<br>
+								{% endif %}
+								{% endfor %}
+							</p>
+							<a href="film&{{ film.getId }}">
+								<button class="btn-danger rounded">Supprimer</button>
+							</a>
 						</div>
+						<img class="w-50 rounded affiche" src="{{ film.getAffiche() }}" alt="Image">
 					</div>
 				</div>
 			</div>
 			{% endfor %}
 		</div>
 		<div class="d-flex justify-content-center mt-3">
-			<button class="btn btn-secondary me-2" type="button" data-bs-target="#header-carousel"
+			<button class="btn btn-secondary m-3 btnCarroussel" type="button" data-bs-target="#header-carousel"
 				data-bs-slide="prev">Précédent</button>
-			<button class="btn btn-secondary" type="button" data-bs-target="#header-carousel"
+			<button class="btn btn-secondary btnCarroussel m-3" type="button" data-bs-target="#header-carousel"
 				data-bs-slide="next">Suivant</button>
 		</div>
 	</div>

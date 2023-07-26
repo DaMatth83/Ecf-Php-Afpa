@@ -14,19 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $delete = $filmDao->delete($id);
-    
-    // if($delete){
-    //     $message = "Suppression OK";
-    // } else{
-    //     $message = "Erreur suppression";
-    // }
-    // var_dump("test");
 }
 
 
 $films = $filmDao->getAll($search);
 $total_films = count($films);
-
 
 
 
