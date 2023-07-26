@@ -12,7 +12,7 @@ btn.addEventListener("click", () => {
     let btnSupprimer = document.createElement("button");
     btnSupprimer.textContent = "Supprimer";
     btnSupprimer.type = "button";
-    btnSupprimer.classList.add("btnSupprimer", "h-25", "ms-3");
+    btnSupprimer.classList.add("btnSupprimer", "h-25", "ms-3", "bg-secondary", "text-light", "rounded", "border-0", "p-1");
 
     // Au click de ce bouton, on supprime la div créée
     btnSupprimer.addEventListener("click", () => {

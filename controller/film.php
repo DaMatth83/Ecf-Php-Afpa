@@ -1,13 +1,38 @@
 <?php
-
 // unset($_SESSION['user']);
 
-//On appelle la fonction getAll()
+// On appelle la fonction getAll()
 $filmDao = new FilmDAO();
+$search = null;
 
-$films = $filmDao->getAll();
 
-//On affiche le template Twig correspondant
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $search = $_POST['search'];
+    $search = strtolower($search);
+}
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $delete = $filmDao->delete($id);
+    
+    // if($delete){
+    //     $message = "Suppression OK";
+    // } else{
+    //     $message = "Erreur suppression";
+    // }
+    // var_dump("test");
+}
+
+
+$films = $filmDao->getAll($search);
+$total_films = count($films);
+
+
+
+
+// On affiche le template Twig correspondant
 echo $twig->render('film.html.twig', [
-    'films' => $films
+    'films' => $films,
+    'total_films' => $total_films,
+    'search' => $search,
 ]);

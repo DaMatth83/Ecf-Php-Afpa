@@ -3,34 +3,41 @@
 class FilmDAO extends Dao
 {
 
-    public function getAll()
+    public function getAll($search)
     {
-        // requête pour tout recuperer dans la table film / acteur / role et faire les INNER JOIN
-        $query = $this->BDD->prepare("SELECT f.idFilm, f.titre, f.realisateur, f.affiche, f.annee, r.personnage, a.nom AS acteur_nom, a.prenom AS acteur_prenom, a.idActeur, r.idRole
-                                     FROM films f
-                                     INNER JOIN roles r ON f.idFilm = r.idFilm
-                                     INNER JOIN acteurs a ON r.idActeur = a.idActeur
-                                     ORDER BY f.idFilm");
+        $sql = "SELECT f.idFilm, f.titre, f.realisateur, f.affiche, f.annee, r.personnage, a.nom AS acteur_nom, a.prenom AS acteur_prenom, a.idActeur, r.idRole
+                FROM films f
+                INNER JOIN roles r ON f.idFilm = r.idFilm
+                INNER JOIN acteurs a ON r.idActeur = a.idActeur";
+
+        if (!empty($search)) {
+            $sql .= " WHERE LOWER(titre) LIKE :search";
+        }
+
+        $sql .= " ORDER BY f.idFilm";
+
+        $query = $this->BDD->prepare($sql);
+
+        if (!empty($search)) {
+            $query->bindValue(':search', "%{$search}%");
+        }
+
         $query->execute();
         $films = array();
 
-        // Creer les nouveaux objets FILM, ACTEUR et ROLE pour toutes les data récupérées dans le fetch
         while ($data = $query->fetch()) {
-            // Recuperer l'id de chaque film et le stocker dans une variable
             $idFilm = $data['idFilm'];
             if (!isset($films[$idFilm])) {
-                // Verifier si le film avec l'idFilm existe deja dans le tableau $films
                 $films[$idFilm] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['personnage']);
             }
 
-            // Ajouter chaque roles / acteurs au film correspondant
             if ($data['personnage'] != null) {
-
-                $acteur = new Acteur($data['idActeur'],$data['acteur_nom'], $data['acteur_prenom']);
-                $role = new Role($data['idRole'], $data['personnage'], $acteur);
+                $acteur = new Acteur($data['idActeur'], $data['acteur_nom'], $data['acteur_prenom']);
+                $role = new Role($data['idRole'],$data['personnage'], $acteur);
                 $films[$idFilm]->addRole($role);
             }
         }
+
         return array_values($films);
     }
     
@@ -104,7 +111,7 @@ class FilmDAO extends Dao
                 }
             }
     
-            return $idFilm;
+            return intval($idFilm); // Return l'idFilm convertit en integer
         } catch (PDOException $e) {
             return $e;
         }
@@ -119,6 +126,21 @@ class FilmDAO extends Dao
         $data = $query->fetch();
         $film = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
         return ($film);
+    }
+    public function delete($id){
+
+        $queryRole = $this->BDD->prepare('DELETE FROM roles WHERE idFilm = :id');
+        $queryRole->execute(array(':id' => $id));
+        $query = $this->BDD->prepare('DELETE FROM films WHERE idFilm = :id');
+        $query->execute(array(':id' => $id));
+    
+        // Vérifier si la suppression a été effectuée
+        if ($query->rowCount() > 0) {
+            return true; // Suppression réussie
+        } else {
+            return false; // Échec de la suppression
+        }
+
     }
 
 }

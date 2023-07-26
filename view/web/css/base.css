@@ -1,3 +1,7 @@
+html {
+   height: 100vh;
+}
+
 body {
    color: black;
    background-color: whitesmoke;
@@ -16,6 +20,12 @@ footer {
 footer {
    position: fixed;
    bottom: 0px;
+   background-color: #343a41;
+   color: white;
+   height: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 ul {
@@ -91,9 +101,17 @@ nav {
 }
 
 .affiche {
-   width: 100%;
+   max-height: 600px;
 }
 
 .realisateur {
    width: 50%;
+}
+
+.affiches {
+   width: 100%;
+}
+
+.formCrea {
+   margin-top: 5%;
 }

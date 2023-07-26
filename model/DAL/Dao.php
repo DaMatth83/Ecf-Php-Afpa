@@ -20,7 +20,7 @@ abstract class Dao
     }
 
     //Récupérer toutes les items
-    abstract public function getAll();
+    abstract public function getAll($search);
 
     //Récupérer plus d'info sur 1 item à l'aide de son id
     abstract public function getOne($id);
@@ -29,7 +29,7 @@ abstract class Dao
     abstract public function add($data);
 
     //Supprimer un item
-    // abstract public function delete($id);
+    abstract public function delete($id);
 
     public function setBDD($bdd)
     {

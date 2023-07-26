@@ -1,10 +1,16 @@
-<div class="container-fluid p-0 mb-5">
+<div class="container-fluid p-0 mb-5 mt-5">
 	<div id="header-carousel" class="carousel slide">
 		<div class="carousel-inner">
+			{% if search is not empty %}
+			<p>Vous avez recherché : "{{ search }}"
+				<br>Résultat de la recherche : {{ total_films }} {{ total_films == 1 ? 'film trouvé' : 'films trouvés'
+				}} !
+			</p>
+			{% endif %}
 			{% for film in films %}
 			<div class="carousel-item {{ loop.first ? 'active' : '' }}">
-				<div class="d-flex align-items-center justify-content-end me-5">
-					<img class="img-fluid w-25 rounded shadow" src="{{ film.getAffiche() }}" alt="Image">
+				<div class="d-flex align-items-center justify-content-end me-5 ">
+					<img class=" w-25 rounded shadow affiche" src="{{ film.getAffiche() }}" alt="Image">
 				</div>
 				<div class="carousel-caption d-flex align-items-center">
 					<div class="container">
@@ -12,7 +18,7 @@
 							<div class="col-4 col-lg-7 text-center text-lg-start">
 								<h1 class=" text-black mb-3 animated slideInDown">{{film.getId}}
 									-
-									{{ film.getTitle }}</h1>
+									{{ film.getTitle }}{{message2}}</h1>
 								<p class="text-black class= mb-3 animated slideInDown">Réalisé en
 									<b>
 										<i>{{film.getAnnee}}</b>
@@ -35,6 +41,9 @@
 									{% endif %}
 									{% endfor %}
 								</p>
+								<a href="film&{{ film.getId }}">
+									<button class="btn-danger rounded">Supprimer</button>
+								</a>
 							</div>
 						</div>
 					</div>
