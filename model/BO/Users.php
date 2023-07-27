@@ -1,26 +1,59 @@
 <?php
 
-class Users{
-    private $id;
+class Users
+{
+
+
+    private $idUser;
+    private $userName;
     private $email;
-    private $pw;
-
-    public function __construct($id, $email, $pw){
-
-        $this->setId($id);
+    private $password;
+    
+    public function __construct($idUser, $userName, $email, $password) {
+    
+        $this->setIdUser($idUser);
+        $this->setUserName($userName);
         $this->setEmail($email);
-        $this->setPw($pw);
+        $this->setPassword($password);
+
     }
 
-
-    public function getId()
+    /**
+     * Get the value of idUser
+     */ 
+    public function getIdUser()
     {
-        return $this->id;
+        return $this->idUser;
     }
 
+    /**
+     * Set the value of idUser
+     *
+     * @return  self
+     */ 
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
 
-    public function setId($id){
-        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * Get the value of userName
+     */ 
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * Set the value of userName
+     *
+     * @return  self
+     */ 
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
 
         return $this;
     }
@@ -46,26 +79,22 @@ class Users{
     }
 
     /**
-     * Get the value of pw
+     * Get the value of password
      */ 
-    public function getPw()
+    public function getPassword()
     {
-        return $this->pw;
+        return $this->password;
     }
 
     /**
-     * Set the value of pw
+     * Set the value of password
      *
      * @return  self
      */ 
-    public function setPw($pw)
+    public function setPassword($password)
     {
-        $this->pw = $pw;
+        $this->password = $password;
 
         return $this;
     }
 }
-
-
-?>
-

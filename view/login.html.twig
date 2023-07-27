@@ -1,9 +1,15 @@
-<div>
-	<p>{{message}}</p>
 
-	{% if session.user is defined %}
-		<p>Vous êtes connecté sur :
-			{{session.user}}</p>
-	{% endif %}
+<form action="login" method="post">
+	<fieldset>
+		<p>{{message}}</p>
+		<h2>Identification</h2>
+		<h4>E-mail</h4>
+		<input type="text" id="email" name="email" placeholder="Please provide your E-mail">
+		<h4>Password</h4>
+		<input class="formDesc" type="password" name="pw" id="pw" placeholder="Mot de passe">
+		<button type="submit" name="Login">Login</button>
+	</fieldset>
+</form>
+	
+	
 
-</div>

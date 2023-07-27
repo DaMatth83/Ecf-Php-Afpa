@@ -18,8 +18,13 @@
 			<p>Médiathèque</p>
 			<ul>
 				<li><a href="film">Films</a></li>
-				<li><a href="login">Compte</a></li>
+				{% if session.user is defined %}
+				<li><a href="logout">Logout</a></li>
 				<li><a href="creation">Creation</a></li>
+				{% else %}
+				<li><a href="login">Login</a></li>
+				<li><a href="signup">Inscription</a></li>
+				{% endif %}
 			</ul>
 			<div class="navForm">
 				<form action="search" method="post">
@@ -29,7 +34,12 @@
 			</div>
 		</nav>
 		<div class="message">
-			<p>Connectez vous pour créer des films</p>
+			{% if session.user is defined %}
+			<p>Bienvenue sur notre Médiathèque {{session.user}} !</p>
+			{% else %}			
+			<p>Veuillez vous connecter pour ajouter un film</p>
+			{% endif %}
+
 		</div>
 	</header>
 </body>
