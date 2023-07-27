@@ -21,14 +21,13 @@ if (isset($_POST['titre']) && isset($_POST['annee']) ) {
     // Appeler la fonction add pour enregistrer le film/acteur(s)/role(s) dans la base de données
     $status = $filmDao->add($film); // Return l'id du film ajouté
 
-
-    if ($status) {
+    if (is_int($status)) { // Si on recupere l'integer idFilm
         $message = "Film ajouté avec succés";
-    } else{
+
+    } else{ // Sinon on recupere l'exception $e
         $message ="Erreur sur l'ajout du film";
     }
 }
-
 
 //On affiche le template Twig correspondant
 echo $twig->render('creation.html.twig',[
