@@ -37,9 +37,11 @@
 								{% endif %}
 								{% endfor %}
 							</p>
+							{% if session.user is defined %}
 							<a href="film&{{ film.getId }}">
 								<button class="btn-danger rounded">Supprimer</button>
 							</a>
+							{% endif %}
 						</div>
 						<img class="w-50 rounded affiche" src="{{ film.getAffiche() }}" alt="Image">
 					</div>

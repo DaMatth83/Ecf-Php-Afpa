@@ -2,17 +2,18 @@
 
 class UsersDAO extends Dao{
 
-    public function getAll(){
-        $query = $this->BDD->prepare("SELECT id, email, password FROM users");
+    public function getAllUsers(){
+        $query = $this->BDD->prepare("SELECT idUser,userName, email, password FROM users");
         $query->execute();
         $users = array();
 
         while ($data = $query->fetch()) {
-            $users[] = new Users($data['id'], $data['email'], $data['password']);
+            $users[] = new Users($data['idUser'],$data['userName'], $data['email'], $data['password']);
         }
         return ($users);
     }
-
+    public function getAll($search){
+    }
     public function add($data)
     {
         $idUser = $data->getIdUser();
@@ -43,23 +44,23 @@ class UsersDAO extends Dao{
     }
 
     public function getOne($id){
-        $query = $this->BDD->prepare('SELECT * FROM users WHERE users.id = :id_user');
+        $query = $this->BDD->prepare('SELECT * FROM users WHERE users.idUser = :id_user');
         $query->execute(array(':id_user' => $id));
         $data = $query->fetch();
-        $user = new Users($data['id'],$data['userName'], $data['email'], $data['password']);
+        $user = new Users($data['idUser'],$data['userName'], $data['email'], $data['password']);
         return ($user);
     }
 
     public function delete($id){
-        $query = $this->BDD->prepare('DELETE FROM users WHERE id = :id');
-        $query->execute(array(':id' => $id));
+        // $query = $this->BDD->prepare('DELETE FROM users WHERE id = :id');
+        // $query->execute(array(':id' => $id));
     
-        // Vérifier si la suppression a été effectuée
-        if ($query->rowCount() > 0) {
-            return true; // Suppression réussie
-        } else {
-            return false; // Échec de la suppression
-        }
+        // // Vérifier si la suppression a été effectuée
+        // if ($query->rowCount() > 0) {
+        //     return true; // Suppression réussie
+        // } else {
+        //     return false; // Échec de la suppression
+        // }
     }
 
     public function login($data)
@@ -68,7 +69,7 @@ class UsersDAO extends Dao{
     $query->execute(array(':email' => $data->getEmail()));
     $user = $query->fetch();
 
-    if ($data && password_verify($data->getPassword(), $user['password'])) {
+    if ($user && password_verify($data->getPassword(), $user['password'])) {
         // // L'utilisateur existe et les mots de passe correspondent
         $user = new Users($user['idUser'],$user['userName'], $user['email'], $user['password']);
         return $user;
@@ -78,16 +79,7 @@ class UsersDAO extends Dao{
     }
 }
 
-public function update($data){
-    $hashedPw = password_hash($data->getPw(), PASSWORD_DEFAULT);
-    $query = $this->BDD->prepare('UPDATE users SET password = :newPw WHERE id = :id');
-    $query->execute(array(':newPw' => $hashedPw, ':id' => $data->getId()));
-    if ($query->rowCount() > 0) {
-        return true;
-} else {
-    return false;
-}
-}
+
 }
 
 ?>
