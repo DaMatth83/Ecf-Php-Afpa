@@ -1,14 +1,17 @@
 
-<form action="login" method="post">
-	<fieldset>
-		<p>{{message}}</p>
-		<h2>Identification</h2>
-		<h4>E-mail</h4>
-		<input type="text" id="email" name="email" placeholder="Please provide your E-mail">
-		<h4>Password</h4>
-		<input class="formDesc" type="password" name="pw" id="pw" placeholder="Mot de passe">
-		<button type="submit" name="Login">Login</button>
-	</fieldset>
+<form class="d-flex align-items-center justify-content-center mt-5" action="login" method="post">
+	<div class="shadow mb-5 bg-body-secondary rounded">
+			<div class="p-3 border border-secondary rounded ">
+			<p>{{message}}</p>
+			<h2>Identification</h2>
+			<h4 class="mt-2">E-mail</h4>
+			<input type="text" id="email" name="email" placeholder="Please provide your E-mail">
+			<h4 class="mt-2">Password</h4>
+			<input class="formDesc" type="password" name="pw" id="pw" placeholder="Mot de passe">
+			<br>
+			<button class=" btn-primary rounded text-light mt-5  btn-block " type="submit" name="Login">Login</button>
+		</div>		
+	</div>
 </form>
 	
 	

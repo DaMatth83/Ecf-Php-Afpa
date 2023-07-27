@@ -13,7 +13,7 @@ if (isset($_POST['email']) && isset($_POST['pw'])) {
         $_SESSION['user'] = $userName;
         header('Location: film');
     } else {
-        $message = "Erreur connexion";
+        $message = "E-mail ou mot de passe incorrects";
     }
 
 }

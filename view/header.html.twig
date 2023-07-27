@@ -15,21 +15,21 @@
 	<header>
 		<nav>
 			<img class="img" src="view/web/img/cinema.png" alt="cinema">
-			<p>Médiathèque</p>
+			<p class="m-1">Médiathèque</p>
 			<ul>
-				<li><a href="film">Films</a></li>
+				<li class="m-1"><a href="film">Films</a></li>
 				{% if session.user is defined %}
-				<li><a href="logout">Logout</a></li>
-				<li><a href="creation">Creation</a></li>
+				<li class="m-1"><a href="logout">Logout</a></li>
+				<li class="m-1"><a href="creation">Creation</a></li>
 				{% else %}
-				<li><a href="login">Login</a></li>
-				<li><a href="signup">Inscription</a></li>
+				<li class="m-1"><a href="login">Login</a></li>
+				<li class="m-1"><a href="signup">Inscription</a></li>
 				{% endif %}
 			</ul>
 			<div class="navForm">
 				<form action="film" method="post">
-					<input type="text" name="search" id="search" placeholder="Rechercher un film">
-					<input type="submit" class="submit" name="submit" value="Rechercher">
+					<input type="text" class="rounded" name="search" id="search" placeholder="Rechercher un film">
+					<input type="submit" class="submit rounded" name="submit" value="Rechercher">
 				</form>
 			</div>
 		</nav>

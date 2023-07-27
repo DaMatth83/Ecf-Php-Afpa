@@ -1,17 +1,30 @@
-<div>
-	<h1>Créer un compte</h1>
-	<h4>{{message}}</h4>
-	<form action="signup" method="post">
-		<div class="form">
-            <label for="userName">Username : </label>
-            <input type="text" name="userName" id="userName" placeholder="Nom d'utilisateur">
-			<label for="email">Email :</label>
-			<input type="email" id="email" name="email" placeholder="Votre Email">
-			<label class="formDesc" for="password">Password :</label>
-			<input type="password" id="password" name="password" placeholder="Mot de passe">
-            <label class="formDesc" for="passwordR">Repeat password : </label>
-            <input type="password" name="passwordR" id="passwordR" placeholder="confirmez votre mot de passe">
-			<input class="formButton" type="submit" value="Créer un compte">
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-sm-12 shadow mb-5 p-0 bg-body-secondary rounded">
+			<div class="p-3 border border-secondary rounded">
+				<h1>Créer un compte</h1>
+				<h4>{{message}}</h4>
+				<form action="signup" method="post">
+					<div class="form-group">
+						<label class="mt-5 mb-1" for="userName">Username :</label>
+						<input type="text" name="userName" id="userName" class="form-control border-secondary rounded" placeholder="Nom d'utilisateur">
+					</div>
+					<div class="form-group">
+						<label class="mt-5 mb-1" for="email">Email :</label>
+						<input type="email" id="email" name="email" class="form-control border-secondary rounded" placeholder="Votre Email">
+					</div>
+					<div class="form-group">
+						<label class="mt-5 mb-1" class="formDesc" for="password">Password :</label>
+						<input type="password" id="password" name="password" class="form-control border-secondary rounded" placeholder="Mot de passe">
+					</div>
+					<div class="form-group">
+						<label class="formDesc mt-5 mb-1" for="passwordR">Repeat password :</label>
+						<input type="password" name="passwordR" id="passwordR" class="mb-5 form-control border-secondary rounded" placeholder="Confirmez votre mot de passe">
+					</div>
+					<input class="btn btn-primary btn-block mt-5" type="submit" value="Créer un compte">
+				</form>
+			</div>
 		</div>
-	</form>
+	</div>
 </div>

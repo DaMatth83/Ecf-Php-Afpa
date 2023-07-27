@@ -8,11 +8,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $user = new Users(null,$_POST['userName'], $_POST['email'], $_POST['password']);
     if ($_POST['password'] === $_POST['passwordR']) {        
         $status = $usersDao->add($user);
-        if ($status) {
+        if (!is_string($status)) {
             header('Location: login');
-        } else {
-            $message ="Erreur création de l'utilisateur";            
-        }
+            } else {
+            $message = $status;
+            }
     }else {
         $message ="Les mots de passes ne correspondent pas";
     }

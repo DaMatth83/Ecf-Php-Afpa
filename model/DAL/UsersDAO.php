@@ -12,8 +12,7 @@ class UsersDAO extends Dao{
         }
         return ($users);
     }
-    public function getAll($search){
-    }
+    public function getAll($search){}
     public function add($data)
     {
         $idUser = $data->getIdUser();
@@ -22,13 +21,16 @@ class UsersDAO extends Dao{
         $password = $data->getPassword();
 
         if(!preg_match("/^[a-zA-Z0-9]*$/", $userName)){
-            return false;
+            return "Erreur création de l'utilisateur : Le nom d'utilisateur ne doit contenir que des lettres et des chiffres.";
+            exit;
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            return false;
+            return "Erreur création de l'utilisateur : Adresse e-mail invalide.";
+            exit;
         }
         if (strlen($password) <6) {
-            return false;
+            return "Erreur création de l'utilisateur : Le mot de passe doit contenir au moins 6 caractères.";
+            exit;
         } 
 
         $hashedPw = password_hash($password, PASSWORD_DEFAULT);
@@ -36,12 +38,17 @@ class UsersDAO extends Dao{
         $valeurs = ['idUser'=> $idUser, 'userName' => $userName, 'email' => $email, 'password' => $hashedPw];
         $requete = 'INSERT INTO users (idUser,userName, email, password) VALUES (:idUser, :userName, :email , :password)';
         $insert = $this->BDD->prepare($requete);
-        if (!$insert->execute($valeurs)) {
-            return false;
-        } else {
+        try {
+            $insert->execute($valeurs);
             return true;
+        } catch (PDOException $e) {
+        $errorMessage = "Erreur création de l'utilisateur : E-mail déjà existant";
+        return $errorMessage;
+        // echo $errorMessage;
+
         }
     }
+    
 
     public function getOne($id){
         $query = $this->BDD->prepare('SELECT * FROM users WHERE users.idUser = :id_user');
