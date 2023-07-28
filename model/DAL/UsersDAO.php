@@ -15,11 +15,12 @@ class UsersDAO extends Dao{
     public function getAll($search){}
     public function add($data)
     {
+        //fonction pour créer un utilisateur avec quelques verificateurs de champs
         $idUser = $data->getIdUser();
         $userName = $data->getUserName();
         $email = $data->getEmail();
         $password = $data->getPassword();
-
+        //verification du champ username via une expression régulière
         if(!preg_match("/^[a-zA-Z0-9]*$/", $userName)){
             return "Erreur création de l'utilisateur : Le nom d'utilisateur ne doit contenir que des lettres et des chiffres.";
             exit;
@@ -28,16 +29,18 @@ class UsersDAO extends Dao{
             return "Erreur création de l'utilisateur : Adresse e-mail invalide.";
             exit;
         }
+        //verification que le mot de passe soit plus long que 6 caractères
         if (strlen($password) <6) {
             return "Erreur création de l'utilisateur : Le mot de passe doit contenir au moins 6 caractères.";
             exit;
         } 
-
+        //hachage du password
         $hashedPw = password_hash($password, PASSWORD_DEFAULT);
 
         $valeurs = ['idUser'=> $idUser, 'userName' => $userName, 'email' => $email, 'password' => $hashedPw];
         $requete = 'INSERT INTO users (idUser,userName, email, password) VALUES (:idUser, :userName, :email , :password)';
         $insert = $this->BDD->prepare($requete);
+        //try and catch pour le cas d'erreur d'une exception de duplication d'email
         try {
             $insert->execute($valeurs);
             return true;
@@ -79,6 +82,7 @@ class UsersDAO extends Dao{
 
     if ($user && password_verify($data->getPassword(), $user['password'])) {
         // // L'utilisateur existe et les mots de passe correspondent
+        // creation d'un objet user unique pour l'utiliser après (notament username en accueil)
         $user = new Users($user['idUser'],$user['userName'], $user['email'], $user['password']);
         return $user;
     } else {
